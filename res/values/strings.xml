@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CalculatorSimple</string>
+    <string name="action_settings">Settings</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">*</string>
+    <string name="divide">/</string>
+    <string name="left_operand">Left Operand</string>
+    <string name="right_operand">Right Operand</string>
+    <string name="sign_placeholder">#</string>
+    <string name="solution">Answer: </string>
+    <string name="finish">Finish</string>
+
+</resources>
