@@ -4,6 +4,7 @@ import tschida.david.utils.Calculator;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +34,21 @@ public class MainActivity extends Activity
 	private EditText rOperand; // Right...
 	
 	boolean signChosen; // A variable to state whether or not an operator button
-						// has been pressed.
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	// has been pressed.
 	
 	/**
 	 * Inherited from Activity. Initializes the fields above.
@@ -54,11 +69,15 @@ public class MainActivity extends Activity
 		lOperand = (EditText) findViewById(R.id.etxt_lOperand);
 		rOperand = (EditText) findViewById(R.id.etxt_rOperand);
 		outputBox = (TextView) findViewById(R.id.txt_solution);
+		
+		// Font source < www.fontspace.com/blue-vinyl/pocket-calculator >
+		String fontPath = "fonts/calc_font/POCKC___.TTF";
+		Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+		outputBox.setTypeface(tf);
 	}
 	
 	/**
 	 * Assigns ClickListeners to the buttons.
-	 * 
 	 */
 	private void init_Buttons()
 	{
@@ -114,19 +133,6 @@ public class MainActivity extends Activity
 		});
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
 	/**
 	 * Called by the ClickListener for the "add" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
@@ -178,7 +184,9 @@ public class MainActivity extends Activity
 	 */
 	private void btn_finish()
 	{
+		printErr(false, ""); // clears the error output box.
 		double solution = 0;
+		
 		boolean error_occurred = false;
 		
 		String leftOpStr = lOperand.getText().toString();
@@ -195,7 +203,7 @@ public class MainActivity extends Activity
 		} catch (NumberFormatException e)
 		{
 			error_occurred = true;
-			printErr("Enter a valid number as the left operand.");
+			printErr(true, "Enter a valid number as the left operand.\n");
 		}
 		try
 		{
@@ -203,7 +211,7 @@ public class MainActivity extends Activity
 		} catch (NumberFormatException e)
 		{
 			error_occurred = true;
-			printErr("Enter a valid number as the right operand.");
+			printErr(true, "Enter a valid number as the right operand.\n");
 		}
 		
 		try
@@ -212,15 +220,19 @@ public class MainActivity extends Activity
 					.calculate(leftOperand, operator, rightOperand);
 		} catch (ArithmeticException a)
 		{
-			printErr("Cannot Divide by Zero! Some men just want to watch the world burn!");
+			printErr(true,
+					"Cannot Divide by Zero! Some men just want to watch the world burn!\n");
 		} catch (IllegalArgumentException i)
 		{
-			printErr("Please select an operator.");
+			printErr(true, "Please select an operator.\n");
 		}
 		
+		if (!error_occurred)
+			outputBox.setText("Answer: " + solution);
+		else
+			outputBox.setText("Answer: ");
+		
 		/*
-		 * End error handling \*\/
-		 * 
 		 * 
 		 * if (!error_occurred) { switch (operator) { case '+': solution =
 		 * leftOperand + rightOperand; break; case '-': solution = leftOperand -
@@ -256,10 +268,14 @@ public class MainActivity extends Activity
 	 * @param text
 	 *            The text to be written to the screen.
 	 */
-	private void print(String text)
+	@SuppressWarnings("unused")
+	private void print(boolean append, String text)
 	{
 		TextView outputBox = (TextView) findViewById(R.id.txt_status);
-		outputBox.setText(text);
+		if (append)
+			outputBox.append(text);
+		else
+			outputBox.setText(text);
 	}
 	
 	/**
@@ -269,11 +285,14 @@ public class MainActivity extends Activity
 	 * @param text
 	 *            The text to be written to the screen.
 	 */
-	private void printErr(String text)
+	private void printErr(boolean append, String text)
 	{
 		TextView outputBox = (TextView) findViewById(R.id.txt_status);
 		outputBox.setTextColor(Color.RED);
-		outputBox.setText(text);
+		if (append)
+			outputBox.append(text);
+		else
+			outputBox.setText(text);
 	}
 	
 }
