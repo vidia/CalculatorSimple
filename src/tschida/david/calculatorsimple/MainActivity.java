@@ -215,6 +215,7 @@ public class MainActivity extends Activity
 		}
 		
 		if (!error_occurred)
+		{
 			try
 			{
 				solution = Calculator.calculate(leftOperand, operator,
@@ -227,6 +228,7 @@ public class MainActivity extends Activity
 			{
 				printErr(true, "Please select an operator.\n");
 			}
+		}
 		
 		if (!error_occurred)
 			outputBox.setText("Answer: " + solution);
