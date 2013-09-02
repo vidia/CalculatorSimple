@@ -48,7 +48,6 @@ public class MainActivity extends Activity
 		return true;
 	}
 	
-	// has been pressed.
 	
 	/**
 	 * Inherited from Activity. Initializes the fields above.
@@ -86,13 +85,13 @@ public class MainActivity extends Activity
 		Button btn_multiply = (Button) findViewById(R.id.btn_multiply);
 		Button btn_divide = (Button) findViewById(R.id.btn_divide);
 		Button btn_finish = (Button) findViewById(R.id.btn_finish);
-		
+		/*
 		btn_plus.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				btn_add();
+				click_btn_add();
 			}
 		});
 		
@@ -101,7 +100,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				btn_subtract();
+				click_btn_subtract();
 			}
 		});
 		
@@ -110,7 +109,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				btn_multiply();
+				click_btn_multiply();
 			}
 		});
 		
@@ -119,7 +118,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				btn_divide();
+				click_btn_divide();
 			}
 		});
 		
@@ -128,16 +127,17 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				btn_finish();
+				click_btn_finish();
 			}
 		});
+		*/
 	}
 	
 	/**
 	 * Called by the ClickListener for the "add" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	private void btn_add()
+	public void click_btn_add()
 	{
 		txt_signPlaceholder.setText("+");
 		signChosen = true;
@@ -147,7 +147,7 @@ public class MainActivity extends Activity
 	 * Called by the ClickListener for the "subtract" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	private void btn_subtract()
+	public void click_btn_subtract()
 	{
 		txt_signPlaceholder.setText("-");
 		signChosen = true;
@@ -157,7 +157,7 @@ public class MainActivity extends Activity
 	 * Called by the ClickListener for the "multiply" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	private void btn_multiply()
+	public void click_btn_multiply()
 	{
 		txt_signPlaceholder.setText("*");
 		signChosen = true;
@@ -167,7 +167,7 @@ public class MainActivity extends Activity
 	 * Called by the ClickListener for the "divide" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	private void btn_divide()
+	public void click_btn_divide()
 	{
 		txt_signPlaceholder.setText("/");
 		signChosen = true;
@@ -182,7 +182,7 @@ public class MainActivity extends Activity
 	 * few methods to simplify the code. - Calculation code will be moved into a
 	 * separate "Calculator" class at a later time with exception handling.
 	 */
-	private void btn_finish()
+	public void click_btn_finish()
 	{
 		printErr(false, ""); // clears the error output box.
 		double solution = 0;
@@ -296,6 +296,11 @@ public class MainActivity extends Activity
 			outputBox.append(text);
 		else
 			outputBox.setText(text);
+	}
+	
+	private void easter_egg()
+	{
+		print(false, "Testing...");
 	}
 	
 }

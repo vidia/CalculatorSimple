@@ -47,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="click_btn_add"
             android:text="@string/plus" />
 
         <Button
@@ -54,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="click_btn_subtract"
             android:text="@string/minus" />
 
         <Button
@@ -61,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="click_btn_multiply"
             android:text="@string/multiply" />
 
         <Button
@@ -68,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="click_btn_divide"
             android:text="@string/divide" />
     </LinearLayout>
 
@@ -88,6 +92,7 @@
             android:id="@+id/btn_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="click_btn_finish"
             android:text="@string/finish" />
     </LinearLayout>
 
@@ -113,6 +118,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="14dp"
             android:layout_marginRight="14dp"
+            android:clickable="true"
+            android:onClick="easter_egg"
             android:text="Created by: David Tschida" />
     </RelativeLayout>
 
