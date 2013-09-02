@@ -163,9 +163,11 @@ public class MainActivity extends Activity
 			{
 				printErr(true,
 						"Cannot Divide by Zero! Some men just want to watch the world burn!\n");
+				error_occurred=true; 
 			} catch (IllegalArgumentException i)
 			{
 				printErr(true, "Please select an operator.\n");
+				error_occurred=true;
 			}
 		}
 		
