@@ -12,5 +12,7 @@
     <string name="sign_placeholder">#</string>
     <string name="solution">Answer: </string>
     <string name="finish">Finish</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_easter_egg">Easter Egg</string>
 
 </resources>

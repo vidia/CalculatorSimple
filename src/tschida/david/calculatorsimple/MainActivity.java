@@ -3,8 +3,10 @@ package tschida.david.calculatorsimple;
 import tschida.david.utils.Calculator;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -240,7 +242,9 @@ public class MainActivity extends Activity
 	
 	public void easter_egg(View view)
 	{
-		print(false, "Testing...");
+		Log.i("Easter Egg", "TexView Pressed...");
+		Intent intent = new Intent(this, EasterEggActivity.class);
+		startActivity(intent);
 	}
 	
 }
