@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -60,8 +59,6 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		init_Buttons();
-		
 		txt_signPlaceholder = (TextView) findViewById(R.id.txt_signPlaceholder);
 		signChosen = false;
 		
@@ -76,68 +73,10 @@ public class MainActivity extends Activity
 	}
 	
 	/**
-	 * Assigns ClickListeners to the buttons.
-	 */
-	private void init_Buttons()
-	{
-		Button btn_plus = (Button) findViewById(R.id.btn_plus);
-		Button btn_minus = (Button) findViewById(R.id.btn_minus);
-		Button btn_multiply = (Button) findViewById(R.id.btn_multiply);
-		Button btn_divide = (Button) findViewById(R.id.btn_divide);
-		Button btn_finish = (Button) findViewById(R.id.btn_finish);
-		/*
-		btn_plus.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				click_btn_add();
-			}
-		});
-		
-		btn_minus.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				click_btn_subtract();
-			}
-		});
-		
-		btn_multiply.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				click_btn_multiply();
-			}
-		});
-		
-		btn_divide.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				click_btn_divide();
-			}
-		});
-		
-		btn_finish.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				click_btn_finish();
-			}
-		});
-		*/
-	}
-	
-	/**
 	 * Called by the ClickListener for the "add" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	public void click_btn_add()
+	public void click_btn_add(View view)
 	{
 		txt_signPlaceholder.setText("+");
 		signChosen = true;
@@ -147,7 +86,7 @@ public class MainActivity extends Activity
 	 * Called by the ClickListener for the "subtract" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	public void click_btn_subtract()
+	public void click_btn_subtract(View view)
 	{
 		txt_signPlaceholder.setText("-");
 		signChosen = true;
@@ -157,7 +96,7 @@ public class MainActivity extends Activity
 	 * Called by the ClickListener for the "multiply" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	public void click_btn_multiply()
+	public void click_btn_multiply(View view)
 	{
 		txt_signPlaceholder.setText("*");
 		signChosen = true;
@@ -167,7 +106,7 @@ public class MainActivity extends Activity
 	 * Called by the ClickListener for the "divide" button. Changes the
 	 * txt_signPlaceholder to display the appropriate sign.
 	 */
-	public void click_btn_divide()
+	public void click_btn_divide(View view)
 	{
 		txt_signPlaceholder.setText("/");
 		signChosen = true;
@@ -182,7 +121,7 @@ public class MainActivity extends Activity
 	 * few methods to simplify the code. - Calculation code will be moved into a
 	 * separate "Calculator" class at a later time with exception handling.
 	 */
-	public void click_btn_finish()
+	public void click_btn_finish(View view)
 	{
 		printErr(false, ""); // clears the error output box.
 		double solution = 0;
@@ -236,7 +175,6 @@ public class MainActivity extends Activity
 			outputBox.setText("Answer: ");
 		
 		/*
-		 * 
 		 * if (!error_occurred) { switch (operator) { case '+': solution =
 		 * leftOperand + rightOperand; break; case '-': solution = leftOperand -
 		 * rightOperand; break; case '*': solution = leftOperand * rightOperand;
@@ -271,10 +209,10 @@ public class MainActivity extends Activity
 	 * @param text
 	 *            The text to be written to the screen.
 	 */
-	@SuppressWarnings("unused")
 	private void print(boolean append, String text)
 	{
 		TextView outputBox = (TextView) findViewById(R.id.txt_status);
+		outputBox.setTextColor(Color.BLACK);
 		if (append)
 			outputBox.append(text);
 		else
@@ -298,7 +236,7 @@ public class MainActivity extends Activity
 			outputBox.setText(text);
 	}
 	
-	private void easter_egg()
+	public void easter_egg(View view)
 	{
 		print(false, "Testing...");
 	}
