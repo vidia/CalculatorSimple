@@ -162,7 +162,7 @@ public class MainActivity extends Activity
 			} catch (ArithmeticException a)
 			{
 				printErr(true,
-						"Cannot Divide by Zero! Some men just want to watch the world burn!\n");
+						"Cannot Divide by Zero!\n");
 				error_occurred=true; 
 			} catch (IllegalArgumentException i)
 			{
@@ -175,33 +175,6 @@ public class MainActivity extends Activity
 			outputBox.setText("Answer: " + solution);
 		else
 			outputBox.setText("Answer: ");
-		
-		/*
-		 * if (!error_occurred) { switch (operator) { case '+': solution =
-		 * leftOperand + rightOperand; break; case '-': solution = leftOperand -
-		 * rightOperand; break; case '*': solution = leftOperand * rightOperand;
-		 * break; case '/': if (rightOperand == 0) {
-		 * printErr("Cannot divide by 0! Are you trying to blow up the world?");
-		 * /* This error was not handled earlier to prevent having to check the
-		 * operator a second time. \*\/ error_occurred = true; } else solution =
-		 * leftOperand / rightOperand; break; default: printErr(
-		 * "That operator is not valid. I don't know how you managed to do that."
-		 * );
-		 * 
-		 * } if (!error_occurred) //If this value is true at this point, then
-		 * the only option is that a divide by zero was attempted.
-		 * outputBox.setText("Answer: " + solution); else
-		 * outputBox.setText("Answer: UNDEFINED"); }
-		 * 
-		 * 
-		 * /* TODO: 1. Possibly make Calculator helper class (or use Math). 2.
-		 * Organize code in more readable format. 3. Search for best way to
-		 * handle getting GUI items. 4. Move GUI items into some type of storage
-		 * area. (fields or storage class like R) 5. Add task bar with various
-		 * funny statuses. 6. Change format of app to look nicer. 7. Proper way
-		 * to use string literals in android code. 8. Then of course test and
-		 * comment. (1 comment per 5 lines, be impressive)
-		 */
 	}
 	
 	/**

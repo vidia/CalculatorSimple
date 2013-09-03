@@ -12,5 +12,6 @@
     <string name="sign_placeholder">#</string>
     <string name="solution">Answer: </string>
     <string name="finish">Finish</string>
+    <string name="action_about">About</string>
 
 </resources>
