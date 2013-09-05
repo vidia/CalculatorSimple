@@ -3,9 +3,12 @@ package tschida.david.calculatorsimple;
 import tschida.david.utils.Calculator;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -47,6 +50,43 @@ public class MainActivity extends Activity
 		return true;
 	}
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_about:
+	            openAbout();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void openAbout()
+	{
+		// <http://developer.android.com/guide/topics/ui/dialogs.html>
+		
+		// 1. Instantiate an AlertDialog.Builder with its constructor
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		// 2. Chain together various setter methods to set the dialog characteristics
+		builder.setMessage(R.string.about_message)
+		       .setTitle(R.string.action_about)
+		       .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+		    	   public void onClick(DialogInterface dialog, int id) {
+		    		   // User cancelled the dialog
+		    		   print(true, "Hello to the world!!");
+		    	   }
+		       })
+		       .setIcon(R.drawable.action_about);
+		
+		// 3. Get the AlertDialog from create()
+		AlertDialog dialog = builder.create();
+		
+		dialog.show();
+		
+		
+	}
 	
 	/**
 	 * Inherited from Activity. Initializes the fields above.

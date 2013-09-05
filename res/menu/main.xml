@@ -5,7 +5,7 @@
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="@string/action_about"
-        android:icon="@drawable/2_action_about"/>
+        android:icon="@drawable/action_about"/>
     
     <item
         android:id="@+id/action_settings"

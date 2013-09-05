@@ -13,5 +13,7 @@
     <string name="solution">Answer: </string>
     <string name="finish">Finish</string>
     <string name="action_about">About</string>
-
+    <string name="about_message">This app was created by David Tschida for EPICS APPS in September of 2013. More information can be found on his website at www.geekspk.wordpress.com. </string>
+	<string name="close">Close</string>
+    
 </resources>
