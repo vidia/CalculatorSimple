@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,8 @@ import android.widget.TextView;
  */
 public class MainActivity extends Activity
 {
+	private static final String TAG = "MainActivity"; //Tag to be used in Log messages. 
+	
 	// Fields for the GUI items that are accessed by more than one method.
 	private TextView outputBox; // Where the solution is displayed.
 	private TextView txt_signPlaceholder; // Displays the selected operation
@@ -35,11 +38,9 @@ public class MainActivity extends Activity
 	private EditText lOperand; // Left operand
 	private EditText rOperand; // Right...
 	
-	boolean signChosen; // A variable to state whether or not an operator button
+	boolean signChosen; // A variable to state whether or not an operator button has been pressed
 	
 	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
@@ -57,14 +58,26 @@ public class MainActivity extends Activity
 	        case R.id.action_about:
 	            openAbout();
 	            return true;
+	        case R.id.action_help:
+	        	openHelp();
+	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
 	
+
+
+	/**
+	 * Is run by onOptionsItemSelected() when the About icon is clicked. 
+	 * It creates a new AlertDialog to display basic information about the app and its developer.
+	 * It uses the AlertDialog.Builder class to change the settings for the dialog then the builder
+	 * creates the dialog and it is shown with the show() method. 
+	 */
 	public void openAbout()
 	{
-		// <http://developer.android.com/guide/topics/ui/dialogs.html>
+		// Code taken from <http://developer.android.com/guide/topics/ui/dialogs.html>
+		// with minor modifications.
 		
 		// 1. Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -75,7 +88,7 @@ public class MainActivity extends Activity
 		       .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 		    	   public void onClick(DialogInterface dialog, int id) {
 		    		   // User cancelled the dialog
-		    		   print(true, "Hello to the world!!");
+		    		   Log.v(TAG, "Closing about dialog...");
 		    	   }
 		       })
 		       .setIcon(R.drawable.action_about);
@@ -84,8 +97,24 @@ public class MainActivity extends Activity
 		AlertDialog dialog = builder.create();
 		
 		dialog.show();
-		
-		
+	}
+	
+	/**
+	 * Is run by onOptionsItemSelected() when the Help icon is clicked. 
+	 */
+	private void openHelp()
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.help_message)
+		       .setTitle(R.string.action_help)
+		       .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+		    	   public void onClick(DialogInterface dialog, int id) {
+		    		   Log.v(TAG, "Closing help dialog...");
+		    	   }
+		       })
+		       .setIcon(R.drawable.action_help);
+		AlertDialog dialog = builder.create();
+		dialog.show();
 	}
 	
 	/**
