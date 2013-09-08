@@ -17,5 +17,6 @@
 	<string name="close">Close</string>
 	<string name="action_help">Help</string>
 	<string name="help_message">Instructions:\n\t1. Fill in operands\n\t2. Choose operator\n\t3. Tap Finish.</string>
-    
+    <string name="created_by">Created By: David Tschida</string>
+
 </resources>
