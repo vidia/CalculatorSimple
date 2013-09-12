@@ -2,6 +2,14 @@ package tschida.david.utils;
 
 import android.util.Log;
 
+/**
+ * Class Calculator
+ * 
+ * A final helper class for making calculations out of strings
+ * 
+ * @author David Tschida
+ * @date Sep 12, 2013 3:46:35 PM
+ */
 public final class Calculator {
 	
 	public static final String TAG = "Calcultor";
