@@ -24,7 +24,7 @@ import android.widget.TextView;
  * buttons.
  * 
  * @author David Tschida (Vidia)
- * @version v0.0.1 (Beta)
+ * @version v0.0.2 (Beta)
  */
 public class MainActivity extends Activity
 {
